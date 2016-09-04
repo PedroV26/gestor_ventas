@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperadoresCreateDlg" widgetVar="OperadoresCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOperadoresTitle}">
+            <h:form id="OperadoresCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operadoresController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOperadoresLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{operadoresController.selected.nombre}" title="#{bundle.CreateOperadoresTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateOperadoresLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{operadoresController.selected.apellido}" title="#{bundle.CreateOperadoresTitle_apellido}" />
+                        <p:outputLabel value="#{bundle.CreateOperadoresLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{operadoresController.selected.categoria}" title="#{bundle.CreateOperadoresTitle_categoria}" />
+                        <p:outputLabel value="#{bundle.CreateOperadoresLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{operadoresController.selected.password}" title="#{bundle.CreateOperadoresTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateOperadoresLabel_codOperador}" for="codOperador" />
+                        <p:inputText id="codOperador" value="#{operadoresController.selected.codOperador}" title="#{bundle.CreateOperadoresTitle_codOperador}" required="true" requiredMessage="#{bundle.CreateOperadoresRequiredMessage_codOperador}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operadoresController.create}" value="#{bundle.Save}" update="display,:OperadoresListForm:datalist,:growl" oncomplete="handleSubmit(args,'OperadoresCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperadoresCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

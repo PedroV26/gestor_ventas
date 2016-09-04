@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperadoresViewDlg" widgetVar="OperadoresViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOperadoresTitle}">
+            <h:form id="OperadoresViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operadoresController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOperadoresLabel_nombre}"/>
+                        <h:outputText value="#{operadoresController.selected.nombre}" title="#{bundle.ViewOperadoresTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewOperadoresLabel_apellido}"/>
+                        <h:outputText value="#{operadoresController.selected.apellido}" title="#{bundle.ViewOperadoresTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewOperadoresLabel_categoria}"/>
+                        <h:outputText value="#{operadoresController.selected.categoria}" title="#{bundle.ViewOperadoresTitle_categoria}"/>
+                        <h:outputText value="#{bundle.ViewOperadoresLabel_password}"/>
+                        <h:outputText value="#{operadoresController.selected.password}" title="#{bundle.ViewOperadoresTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewOperadoresLabel_codOperador}"/>
+                        <h:outputText value="#{operadoresController.selected.codOperador}" title="#{bundle.ViewOperadoresTitle_codOperador}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OperadoresViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperadoresEditDlg" widgetVar="OperadoresEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOperadoresTitle}">
+            <h:form id="OperadoresEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operadoresController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOperadoresLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{operadoresController.selected.nombre}" title="#{bundle.EditOperadoresTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditOperadoresLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{operadoresController.selected.apellido}" title="#{bundle.EditOperadoresTitle_apellido}" />
+                        <p:outputLabel value="#{bundle.EditOperadoresLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{operadoresController.selected.categoria}" title="#{bundle.EditOperadoresTitle_categoria}" />
+                        <p:outputLabel value="#{bundle.EditOperadoresLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{operadoresController.selected.password}" title="#{bundle.EditOperadoresTitle_password}" />
+                        <p:outputLabel value="#{bundle.EditOperadoresLabel_codOperador}" for="codOperador" />
+                        <p:inputText id="codOperador" value="#{operadoresController.selected.codOperador}" title="#{bundle.EditOperadoresTitle_codOperador}" required="true" requiredMessage="#{bundle.EditOperadoresRequiredMessage_codOperador}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operadoresController.update}" value="#{bundle.Save}" update="display,:OperadoresListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OperadoresEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperadoresEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
